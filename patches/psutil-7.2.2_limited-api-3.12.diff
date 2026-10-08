@@ -1,0 +1,13 @@
+--- setup.py.orig	2026-10-04 13:38:28.716323000 +0900
++++ psutil-7.2.2/setup.py	2026-10-04 13:38:28.749350700 +0900
+@@ -164,8 +164,8 @@
+     # PyErr_SetFromWindowsErr / PyErr_SetFromWindowsErrWithFilename are
+     # part of the stable API/ABI starting with CPython 3.7
+     py_limited_api = {"py_limited_api": True}
+-    options = {"bdist_wheel": {"py_limited_api": "cp37"}}
+-    macros.append(('Py_LIMITED_API', '0x03070000'))
++    options = {"bdist_wheel": {"py_limited_api": "cp312"}}
++    macros.append(('Py_LIMITED_API', '0x030c0000'))
+ else:
+     py_limited_api = {}
+     options = {}

@@ -1,0 +1,52 @@
+diff --git a/sources/pyside6/plugins/designer/CMakeLists.txt b/sources/pyside6/plugins/designer/CMakeLists.txt
+index d231d82..79e7747 100644
+--- a/sources/pyside6/plugins/designer/CMakeLists.txt
++++ b/sources/pyside6/plugins/designer/CMakeLists.txt
+@@ -23,7 +23,7 @@ target_sources(PySidePlugin PRIVATE
+ target_compile_definitions(PySidePlugin PRIVATE -DQT_NO_KEYWORDS=1)
+ 
+ if(FORCE_LIMITED_API)
+-    target_compile_definitions(PySidePlugin PRIVATE "-DPy_LIMITED_API=0x030a0000")
++    target_compile_definitions(PySidePlugin PRIVATE "-DPy_LIMITED_API=0x030c0000")
+ endif()
+ 
+ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+diff --git a/sources/shiboken6/libshiboken/CMakeLists.txt b/sources/shiboken6/libshiboken/CMakeLists.txt
+index d3fef1b..ba006e3 100644
+--- a/sources/shiboken6/libshiboken/CMakeLists.txt
++++ b/sources/shiboken6/libshiboken/CMakeLists.txt
+@@ -138,7 +138,7 @@ shiboken_compute_python_includes()
+ shiboken_compute_python_libraries()
+ 
+ if(PYTHON_LIMITED_API)
+-    target_compile_definitions(libshiboken PUBLIC "-DPy_LIMITED_API=0x030a0000")
++    target_compile_definitions(libshiboken PUBLIC "-DPy_LIMITED_API=0x030c0000")
+ endif()
+ 
+ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+diff --git a/sources/shiboken6_generator/data/Shiboken6ToolsMacros.cmake b/sources/shiboken6_generator/data/Shiboken6ToolsMacros.cmake
+index 27a2ec5..86106b2 100644
+--- a/sources/shiboken6_generator/data/Shiboken6ToolsMacros.cmake
++++ b/sources/shiboken6_generator/data/Shiboken6ToolsMacros.cmake
+@@ -99,7 +99,7 @@ function(shiboken_generator_create_binding)
+ 
+     # set limited API
+     if(arg_FORCE_LIMITED_API OR FORCE_LIMITED_API)
+-        target_compile_definitions(${arg_EXTENSION_TARGET} PRIVATE -DPy_LIMITED_API=0x030a0000)
++        target_compile_definitions(${arg_EXTENSION_TARGET} PRIVATE -DPy_LIMITED_API=0x030c0000)
+     endif()
+ 
+ 
+diff --git a/wheel_artifacts/pyproject.toml.base b/wheel_artifacts/pyproject.toml.base
+index 9fc5d79..3e6f5fb 100644
+--- a/wheel_artifacts/pyproject.toml.base
++++ b/wheel_artifacts/pyproject.toml.base
+@@ -52,7 +52,7 @@ Tracker = "https://qt-project.atlassian.net/browse/PYSIDE"
+ # PROJECT_SCRIPTS
+ 
+ [tool.distutils.bdist_wheel]
+-py_limited_api = "cp310"
++py_limited_api = "cp312"
+ plat_name = "PROJECT_TAG"
+ 
+ [tool.setuptools.dynamic]

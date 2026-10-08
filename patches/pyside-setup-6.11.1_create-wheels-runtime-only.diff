@@ -1,0 +1,14 @@
+diff --git a/create_wheels.py b/create_wheels.py
+index c4f8a36..453ec09 100644
+--- a/create_wheels.py
++++ b/create_wheels.py
+@@ -457,6 +457,9 @@ if __name__ == "__main__":
+         "PySide6_Addons": wheel_pyside6_addons,
+         "PySide6": wheel_pyside6,
+     }
++    # K-1004-2: DMX WS needs only the runtime parts (Core/Gui/Widgets/Svg/Test).
++    for _skip in ("shiboken6_generator", "PySide6_Addons", "PySide6"):
++        wheels.pop(_skip, None)
+     if not options.no_examples:
+         wheels["PySide6_Examples"] = wheel_pyside6_examples
+ 
